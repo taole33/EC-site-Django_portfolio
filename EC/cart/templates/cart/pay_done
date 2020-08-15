@@ -1,0 +1,13 @@
+{% extends 'merchandise/temp.html' %}
+
+{% block title %}支払完了{% endblock %}
+
+{% block content %}
+
+<h2>ありがとうございます。</h2>
+{{total_price}}円
+支払完了しました。
+
+
+
+{% endblock %}

@@ -21,7 +21,6 @@ def cart_add(request, product_id):
 
 def cart_list(request):
     cart = request.session.get('cart') 
-    test = request.session.get() 
     if cart:
         products = []
         for product_id in cart:

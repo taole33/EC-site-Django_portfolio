@@ -3,25 +3,31 @@
 {% block title %}カート{% endblock %}
 
 {% block content %}
- <ul>
+<h3>ショッピングカート</h3>
+<hr>
+ <ul style="list-style:none;">
      {% for product in products %}
      <li>
-         {{ product.name }}: {{ product.price }}円
+         <img src ="{{ product.photourl }}">
+         <p>{{ product.name }}</p>
+         <p>{{ product.price }}円</p>
          <form method="post" action="{% url 'cart_delete' product.id %}">
-             {% csrf_token %}
-             <input type="submit" value="削除">
+            {% csrf_token %}
+            <input type="submit" value="削除">
          </form>
+         <hr>
      </li>
     {% endfor %}
  <ul>
 
 
-
+<div class="text-right">
  合計金額: {{ total_price }}円
 
- <form action="" method="post">
-    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="######3" total_price={{total_price}}>
+ <form action="{% url 'payment' %}" method="post">
+    {% csrf_token %}
+    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="WRITE_HERE_publickey">
     </script>
   </form>
-
+</div>
 {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'merchandise/temp.html' %}
+
+{% block title %}商品一覧{% endblock %}
+
+{% block content %}
+
+
+
+  
+  <div class="row">
+
+    {% for product in products %}
+
+    <div class="col-md-4 col-12 p-3">
+      <a href="{% url 'product_detail' product.id %}">
+      <div class="d-flex flex-column">
+        <div class=""><img src ="{{ product.photourl }}" style="width:250px;height:250px;object-fit:cover"></div>
+        <div class="">{{ product.name }}</div>
+        <div class="text-danger font-weight-bold">{{ product.price }}円</div>
+      </div>
+      </a>
+      <hr color="#CCC">     
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+
+
+  <div class ="text-center">
+    {% if products.has_previous %}
+      <a href="?page={{ products.previous_page_number }}&{{ search_params }}">&lt; 前のページ</a>
+    {% else %}
+      <span>&lt; 前のページ</span>
+    {% endif %}
+
+    {{ products.number }}ページ
+
+    {% if products.has_next %}
+      <a href="?page={{ products.next_page_number }}&{{ search_params }}">次のページ &gt;</a>
+    {% else %}
+      <span>次のページ &gt;</span>
+    {% endif %}
+  </div>
+
+{% endblock %}

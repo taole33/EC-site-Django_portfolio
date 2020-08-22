@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
+  <meta charset="UTF-8">
+  <title>ECサイト - {% block title %}{% endblock %}</title>
+  <!-- fontawesome -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  {% block head %}{% endblock %}
+</head>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <a class="text-white navbar-brand" href="{% url 'product_list' %}">Amazon.co.jp</a>
+    <a class="text-white">
+      <form> {{ form }}  <input type="submit" value="検索">  </form>
+    </a>
+    <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="text-white nav-link" href="{% url 'cart_list' %}"><i class="fas fa-shopping-cart fa-3x"></i></a>
+        </li>
+      </ul>
+
+    </div>      
+  </nav>
+  </header>
+
+
+
+<body>
+<p style="padding-top: 60px"></p>
+<div class="m-5">
+{% block content %}
+{% endblock %}
+</div>
+<footer class="background-color text-white bg-dark p-3 my-5">
+  <p>© 1996-2020, Amazon.com, Inc. or its affiliates</p>
+</footer>
+</body>
+</html>
